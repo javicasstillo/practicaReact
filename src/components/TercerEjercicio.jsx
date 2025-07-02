@@ -6,12 +6,9 @@ function TercerEjercicio(){
     const [tarea, setTarea] = useState([])
     const [error, setError] = useState("")
     
-    
     const extraerValor = (e)=>{
         setvalorInput(e.target.value)
     }
-
-    
 
     const agregarTarea = (e)=>{
         e.preventDefault()
@@ -24,7 +21,12 @@ function TercerEjercicio(){
         setError("")
     }
 
-
+    const borrarTarea = (nombreTarea)=>{
+        setTarea(tarea.filter((item=> {
+           return item !== nombreTarea
+        })))
+        //item es cada string dentro del array tarea (ejemplo: "estudiar"), nombreTarea es un parametro (tambien string) que se le pasa a la funcion borrarTarea para luego ser comparados (ES EL STRING QUE QUIERO BORRAR). Por ejemplo item=estudiar nombreTarea = estudiar, en este caso se cumple la condicion y se borra ese elemento del array, caso contrario nombreTarea = cocinar, no se cumple la condicion y el item del array se queda. 
+    }
 
     return <div className="bg-body-tertiary text-center py-3">
         <h1>Tercer Ejercicio</h1>
@@ -33,24 +35,20 @@ function TercerEjercicio(){
         <div className="container text-center">
 
             <form className="d-flex justify-content-center gap-2">
-                <input type="text" value={valorInput} onChange={extraerValor} />
+                <input type="text" className="form-control" value={valorInput} onChange={extraerValor} />
                 <button className="btn btn-outline-info" onClick={agregarTarea}>Agregar</button>
                 
             </form>
 
-            <p className="text-center text-danger py-3">{error}</p>
+            <p className="text-center text-danger">{error}</p>
 
-            <ul className="list-group py-3">
+            <ul className="list-group  py-3">
                 {tarea.map((nuevaTarea, index)=>{
-                    return <li className="list-group-item my-1" key={index}>{nuevaTarea}</li>
+                    return <li className="list-group-item d-flex align-items-center justify-content-between" key={index}>{nuevaTarea}<button className="btn btn-danger" onClick={() =>borrarTarea(nuevaTarea)}>Borrar</button></li>
                 })}
                 
             </ul>
-
-            
-
         </div>
-        
     </div>
 
 }
