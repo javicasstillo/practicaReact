@@ -30,8 +30,18 @@ function QuintoEjercicio(){
             setError("")
         } else if (respuestaClima.status === 404){
             setError("Ciudad inexistente")
+            setClima({
+                weather: [],
+                name: "",
+                main: {}
+            })
         } else{
             setError("Ocurrio un error inesperado. Intente de nuevo mas tarde.")
+            setClima({
+                weather: [],
+                name: "",
+                main: {}
+            })
         }
         
     }
