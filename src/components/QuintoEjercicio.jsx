@@ -6,7 +6,9 @@ function QuintoEjercicio(){
         weather: [],
         name: "",
         main: {}
-});
+    });
+
+    const [error, setError] = useState("")
     const [inputValor, setInputValor] = useState("")
 
     const apiKey = "32968dc17635ac0ac7a57f6a411c6860"
@@ -22,10 +24,16 @@ function QuintoEjercicio(){
     const obtenerClima = async (e)=>{
         e.preventDefault()
         const respuestaClima = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputValor}&appid=${apiKey}&lang=es&units=metric`);
-
-        console.log(respuestaClima)
-        const respuestaFinalClima = await respuestaClima.json()
-        setClima(respuestaFinalClima)
+        if (respuestaClima.status === 200){
+            const respuestaFinalClima = await respuestaClima.json()
+            setClima(respuestaFinalClima)
+            setError("")
+        } else if (respuestaClima.status === 404){
+            setError("Ciudad inexistente")
+        } else{
+            setError("Ocurrio un error inesperado. Intente de nuevo mas tarde.")
+        }
+        
     }
 
 
@@ -39,6 +47,9 @@ function QuintoEjercicio(){
         </form>
 
         <div className="container">
+
+            <p>{error}</p>
+
             <h3>{clima.name}</h3>
             
             <p>{clima.main.temp}</p>
