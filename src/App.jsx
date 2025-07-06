@@ -4,6 +4,7 @@ import PrimerEjercicio from "./components/PrimerEjercicio";
 import SegundoEjercicio from "./components/SegundoEjercicio";
 import TercerEjercicio from "./components/TercerEjercicio";
 import CuartoEjercicio from "./components/CuartoEjercicio";
+import QuintoEjercicio from "./components/QuintoEjercicio";
 
 
 
@@ -16,6 +17,7 @@ function App() {
     <SegundoEjercicio></SegundoEjercicio>
     <TercerEjercicio></TercerEjercicio>
     <CuartoEjercicio></CuartoEjercicio>
+    <QuintoEjercicio></QuintoEjercicio>
     </div>
   
 }
