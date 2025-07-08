@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 function QuintoEjercicio(){
 
@@ -17,9 +17,7 @@ function QuintoEjercicio(){
         setInputValor(e.target.value)
     }
 
-    useEffect(()=>{
-        console.log(clima)
-    }, [clima])
+    
 
     const obtenerClima = async (e)=>{
         e.preventDefault()
