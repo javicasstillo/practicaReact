@@ -50,9 +50,8 @@ function SextoEjercicio(){
                 <option value="">--Selecciona un Pais--</option>
                 <option value="ar">Argentina</option>
                 <option value="mx">Mexico</option>
-                <option value="br">Brasil</option>
                 <option value="co">Colombia</option>
-                <option value="cl">Chile</option>
+                <option value="eu">Estados Unidos</option>
             </select>
 
             <select name="categoria" value={categoria} onChange={extraerCategoria} >
