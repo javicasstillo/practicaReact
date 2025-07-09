@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import '../App.css'
+import Spinner from 'react-bootstrap/Spinner';
 
 function SextoEjercicio() {
 
@@ -30,6 +31,7 @@ function SextoEjercicio() {
     }
     const obtenerNoticia = async (e) => {
         e.preventDefault()
+        setMostrarSpinner(true)
         const extraerDatos = await fetch(`https://newsdata.io/api/1/latest?apikey=${claveApi}&category=${categoria}&country=${pais}&language=es`)
         if (extraerDatos.status === 200) {
             const resultadoNoticia = await extraerDatos.json()
@@ -46,6 +48,7 @@ function SextoEjercicio() {
             setNoticia([])
             setMensaje("Error de servidor. Por favor intente mas tarde.")
         }
+        setMostrarSpinner(false)
 
 
     }
@@ -79,7 +82,9 @@ function SextoEjercicio() {
 
         <div className="container py-3">
             <div className="row justify-content-center g-3">
-                <p className="text-center text-danger">{mensaje}</p>
+                {mostrarSpinner===true ?
+                <Spinner animation="grow" variant="info"></Spinner>
+                : <p className="text-center text-danger">{mensaje}</p>}
                 {noticia.map((item, index) => (
                     <div key={index} className="col-12 col-md-4">
                         <div className="card h-100">
@@ -99,6 +104,7 @@ function SextoEjercicio() {
                     </div>
 
                 ))}
+                
             </div>
         </div>
 
