@@ -89,7 +89,7 @@ function SextoEjercicio() {
                     <div key={index} className="col-12 col-md-4">
                         <div className="card h-100">
                             <img src={item.image_url} className="w-100 mb-3" alt="Imagen de la noticia" />
-                            <div className="d-flex flex-column flex-grow-1">
+                            <div className="container d-flex flex-column flex-grow-1">
                                 <h5>{item.title}</h5>
                                 <p>{recortar(item.description)}</p>
                                 <div className="mt-auto">
